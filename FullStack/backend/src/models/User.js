@@ -38,3 +38,22 @@ const userSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("User", userSchema);
+
+
+/* TEST ACCOUNTS
+
+{
+    "email": "kuyaelberth05@gmail.com",
+    "password": "tesT123@"
+}
+
+*/
+
+/*
+
+{
+    "email": "docenaelberth9@gmail.com",
+    "password": "latestPassword@12345"
+}
+
+*/
