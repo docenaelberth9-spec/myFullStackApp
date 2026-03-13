@@ -1,7 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import authRoute from './routes/auth.routes.js'
+import authRoute from './routes/auth.routes.js';
+import teamRoute from './routes/teams.routes.js';
 import morgan from 'morgan';
 
 const app = express();
@@ -11,6 +12,8 @@ app.use(cookieParser());
 app.use(cors());
 app.use(morgan('dev'));
 
-app.use('/api/app', authRoute)
+app.use('/api/app', authRoute);
+
+app.use('/api/app/teams', teamRoute)
 
 export default app;

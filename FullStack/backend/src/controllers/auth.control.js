@@ -266,18 +266,11 @@ export const login = async (req, res) => {
 
         await user.save();
 
-        const token = generateToken(res, user._id);
-
-        res.cookie("accessToken", token, {
-            httpOnly: true,
-            sameSite: 'strict',
-            maxAge: 15 * 60 * 1000
-        })
+        generateToken(res, user._id);
 
         res.status(200).json({
             success: true,  
             message: 'Login success',
-            //token, // remove 
             user: {
                 ...user._doc,
                 password: undefined
