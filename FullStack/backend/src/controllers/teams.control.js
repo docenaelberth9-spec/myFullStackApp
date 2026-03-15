@@ -62,6 +62,22 @@ export const getTeam = async (req, res) => {
     }
 }
 
+export const getOneTeam = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const oneTeam = await Team.findOne({ _id: id,  createdBy: req.user._id });
+
+        if(!oneTeam) {
+            return res.status(400).json({ success: false , message: 'Team not found' })
+        }
+
+        return res.status(200).json({ success: true, message: `${oneTeam.teamName} Team selected` , data: oneTeam})
+    } catch (error) {
+        console.error("Error Selecting a Team", error);
+        res.status(500).json({ success: false, message: error.message })
+    }
+}
+
 export const updateTeam = async (req, res) => {
     try {
         const { id } = req.params;
